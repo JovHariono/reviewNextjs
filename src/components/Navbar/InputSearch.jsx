@@ -9,7 +9,7 @@ const InputSearch = () => {
   const router = useRouter();
 
   const handleSearch = (event) => {
-    const keyword = searchRef.current.value;    
+    const keyword = searchRef.current.value;
 
     if(!keyword || keyword.trim() == "") return
 
