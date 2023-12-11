@@ -11,7 +11,9 @@ const InputSearch = () => {
   const handleSearch = (event) => {
     const keyword = searchRef.current.value;    
 
-    if ((event.key == "Enter" || event.type === "click") && keyword !== "") {
+    if(!keyword || keyword.trim() == "") return
+
+    if ((event.key == "Enter" || event.type === "click")) {
       router.push(`/search/${keyword}`);
       clearSearchInput();
     }
