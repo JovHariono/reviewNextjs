@@ -1,9 +1,12 @@
 import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
+import CollectionButton from "@/components/AnimeList/CollectionButton";
+import { authUserSession } from "@/libs/auth-libs";
 
 const Page = async ({ params }) => {
   const { id } = params;
+  const user = await authUserSession()
 
   const anime = await getAnimeResponse(`anime/${id}`);
 
@@ -13,6 +16,7 @@ const Page = async ({ params }) => {
         <h3 className="text-2xl text-color-primary">
           {anime.data.title} - {anime.data.year}
         </h3>
+        <CollectionButton />
       </div>
       <div className="pt-4 px-4 flex gap-2 text-color-primary overflow-x-auto">
         <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">
